@@ -1,0 +1,22 @@
+#
+# sleep sub
+#
+  begin
+    prog = irexec
+    button = key_enter
+    config = led.py yellow addblink & ssd1306_disp_mode.py sleep_enter
+    flags = quit
+  end
+  begin
+    prog = irexec
+    button = key_right
+    config = led.py yellow addblink & ssd1306_disp_mode.py sleep_right
+    flags = quit
+  end
+  begin
+    prog = irexec
+    button = key_left
+    config = led.py yellow addblink & ssd1306_disp_mode.py sleep_left
+    flags = quit
+  end
+

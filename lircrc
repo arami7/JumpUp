@@ -1,0 +1,112 @@
+include /etc/lirc/lircrc.mpd
+include /etc/lirc/lircrc.inet_radio
+include /etc/lirc/lircrc.alarm
+include /etc/lirc/lircrc.weather_air_clock
+
+
+# Poweroff
+
+begin
+    prog = irexec
+    button = key_p
+    config = poweroff
+    flags = quit
+end
+
+# volume -----------------------------------------
+
+begin
+    prog = irexec
+    button = key_volUp
+    config = led.py yellow addblink & volume.py up
+    repeat = 1
+    delay = 8
+    flags = quit
+end
+begin
+    prog = irexec
+    button = key_volDown
+    config = led.py yellow addblink & volume.py down
+    repeat = 1
+    delay = 8
+    flags = quit
+end
+begin
+    prog = irexec
+    button = key_mute
+    config = led.py yellow addblink & volume.py mute
+	repeat = 1
+    delay = 8
+    flags = quit
+end
+
+# clock ------------------------------------------- 
+
+begin
+    prog = irexec
+    button = key_1
+    config = led.py cyan; led.py red addblink & ssd1306_disp_mode.py clock
+    mode = clock
+	flags = quit
+end
+begin
+    prog = irexec
+    button = key_2
+    config = led.py cyan; led.py red addblink & ssd1306_disp_mode.py alarm
+    mode = alarm
+	flags = quit
+end
+begin
+    prog = irexec
+    button = key_3
+    config = led.py cyan; led.py red addblink & ssd1306_disp_mode.py sleep
+    mode = sleep
+    flags = quit
+end
+
+# weather ------------------------------------------
+
+begin
+    prog = irexec
+    button = key_4
+    config = led.py cyan; led.py red addblink & ssd1306_disp_mode.py weather
+    mode = weather
+    flags = quit
+end
+begin
+    prog = irexec
+    button = key_5
+    config = led.py cyan; led.py red addblink & ssd1306_disp_mode.py air
+    mode = air
+	flags = quit
+end
+
+# networkCheck ------------------------------------
+
+begin
+    prog = irexec
+    button = key_6
+    config = led.py cyan; led.py red addblink & ssd1306_disp_mode.py network 
+	mode = mpd
+	flags = quit
+end
+
+# mpd --------------------------------------------
+
+begin
+    prog = irexec
+    button = key_7
+    config = led.py cyan; led.py red addblink & pkill -9 -x mplayer; fm_radio off; ssd1306_disp_mode.py mpd
+    mode = mpd
+    flags = quit
+end
+
+# inet_radio -------------------------------------
+
+begin
+    prog = irexec
+    button = key_8
+    config = led.py cyan; led.py red addblink & mpc -q stop; pkill -9 -x mplayer; ssd1306_disp_mode.py inet_radio
+    mode = inet_radio
+    flags = quit
+end

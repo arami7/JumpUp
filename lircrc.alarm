@@ -1,0 +1,76 @@
+# alarm
+
+begin alarm 
+  begin
+    prog = irexec
+    button = key_up
+    config = led.py yellow addblink & ssd1306_disp_mode.py alarm_up
+    flags = quit
+  end
+  begin
+    prog = irexec
+    button = key_down
+    config = led.py yellow addblink & ssd1306_disp_mode.py alarm_down
+    flags = quit
+  end
+  begin
+    prog = irexec
+    button = key_right
+    config = led.py yellow addblink & ssd1306_disp_mode.py alarm_right
+    flags = quit
+  end
+  begin
+    prog = irexec
+    button = key_left
+    config = led.py yellow addblink & ssd1306_disp_mode.py alarm_left
+    flags = quit
+  end
+  begin
+    prog = irexec
+    button = key_nextCh
+    config = led.py yellow addblink & ssd1306_disp_mode.py alarm_folderup
+    repeat = 1
+    delay = 8
+    flags = quit
+  end
+  begin
+    prog = irexec
+    button = key_preCh
+    config = led.py yellow addblink & ssd1306_disp_mode.py alarm_folderdown
+    repeat = 1
+    delay = 8
+    flags = quit
+  end
+  begin
+    prog = irexec
+    button = key_enter
+    config = led.py yellow addblink & ssd1306_disp_mode.py alarm_enter
+    repeat = 1
+    delay = 8
+    flags = quit
+  end
+
+# sleep
+
+  begin
+    prog = irexec
+    button = key_sleep
+    config = led.py yellow addblink & ssd1306_disp_mode.py sleep
+    mode = alarm_sleep
+    flags = quit
+  end
+end alarm
+
+# alarm_sleep
+
+begin alarm_sleep
+  begin
+    prog = irexec
+    button = key_sleep
+    config = led.py yellow addblink & ssd1306_disp_mode.py alarm
+    mode = alarm
+    flags = quit
+  end
+include /etc/lirc/lircrc.sleep_sub
+end alarm_sleep
+

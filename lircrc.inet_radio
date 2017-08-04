@@ -1,0 +1,92 @@
+# memory_inet_radio (radio List)
+
+begin memory_inet_radio
+  begin
+    prog = irexec
+    button = key_up
+    config = led.py yellow addblink & pkill -9 -x mplayer; ssd1306_disp_mode.py memory_inet_radio_up
+    flags = quit
+  end
+  begin
+    prog = irexec
+    button = key_down
+    config = led.py yellow addblink & pkill -9 -x mplayer; ssd1306_disp_mode.py memory_inet_radio_down
+    flags = quit
+  end
+  begin
+    prog = irexec
+    button = key_preCh
+    config = led.py yellow addblink & pkill -9 -x mplayer; ssd1306_disp_mode.py memory_inet_radio_channeldown
+    flags = quit
+  end
+  begin
+    prog = irexec
+    button = key_nextCh
+    config = led.py yellow addblink & pkill -9 -x mplayer; ssd1306_disp_mode.py memory_inet_radio_channelup
+    flags = quit
+  end
+  begin
+    prog = irexec
+    button = key_right
+    config = led.py yellow addblink & pkill -9 -x mplayer; ssd1306_disp_mode.py memory_inet_radio_right
+    flags = quit
+  end
+  begin
+    prog = irexec
+    button = key_left
+    config = led.py yellow addblink & pkill -9 -x mplayer; ssd1306_disp_mode.py memory_inet_radio_left
+    flags = quit
+  end
+  begin 
+    prog = irexec
+	button = key_enter
+	config = ley.py yellow addblink & pkill -9 -x mplayer; ssd1306_disp_mode.py memory_inet_radio_enter
+	mode = inet_radio
+	flags = quit
+  end
+end memory_inet_radio
+
+# inet_radio
+
+begin inet_radio 
+  
+# play/pause toggle
+  
+  begin
+    prog = irexec
+    button = key_left
+    config = led.py yellow addblink & inet_radio.py down 
+	flags = quit
+  end
+  begin
+    prog = irexec
+    button = key_right
+    config = led.py yellow addblink & inet_radio.py up 
+	flags = quit
+  end
+  begin
+    prog = irexec
+    button = key_down 
+    config = led.py yellow addblink & inet_radio.py pause 
+	config = led.py yellow addblink & inet_radio.py start
+	flags = quit
+  end
+  begin
+    prog = irexec
+    button = key_up
+    config = led.py yellow addblink & inet_radio.py stop 
+    flags = quit
+  end
+
+
+# Enter memory_inet_radio
+
+  begin
+    prog = irexec
+    button = key_voice
+    config = led.py cyan; led.py red addblink & ssd1306_disp_mode.py memory_inet_radio
+    mode = memory_inet_radio
+    flags = quit
+  end
+end inet_radio 
+

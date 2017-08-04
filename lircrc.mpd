@@ -1,0 +1,115 @@
+# memory_mpd (playlist)
+
+begin memory_mpd
+  begin
+    prog = irexec
+    button = key_up
+    config = led.py yellow addblink & pkill -9 -x mplayer; ssd1306_disp_mode.py memory_mpd_up
+    flags = quit
+  end
+  begin
+    prog = irexec
+    button = key_down
+    config = led.py yellow addblink & pkill -9 -x mplayer; ssd1306_disp_mode.py memory_mpd_down
+    flags = quit
+  end
+  begin
+    prog = irexec
+    button = key_preCh
+    config = led.py yellow addblink & pkill -9 -x mplayer; ssd1306_disp_mode.py memory_mpd_channeldown
+    flags = quit
+  end
+  begin
+    prog = irexec
+    button = key_nextCh
+    config = led.py yellow addblink & pkill -9 -x mplayer; ssd1306_disp_mode.py memory_mpd_channelup
+    flags = quit
+  end
+  begin
+    prog = irexec
+    button = key_right
+    config = led.py yellow addblink & pkill -9 -x mplayer; ssd1306_disp_mode.py memory_mpd_right
+    flags = quit
+  end
+  begin
+    prog = irexec
+    button = key_left
+    config = led.py yellow addblink & pkill -9 -x mplayer; ssd1306_disp_mode.py memory_mpd_left
+    flags = quit
+  end
+  begin
+    prog = irexec
+    button = key_left
+    config = led.py yellow addblink & pkill -9 -x mplayer; ssd1306_disp_mode.py memory_mpd_enter
+    mode = mpd
+    flags = quit
+  end
+
+end memory_mpd
+
+
+# mpd 
+
+begin mpd
+ 
+# play / pause toggle
+
+ begin
+    prog = irexec
+    button = key_down
+    config = led.py red addblink & mpc -q toggle; ssd1306_disp_mode.py
+    flags = quit
+  end
+  begin
+    prog = irexec
+    button = key_up
+    config = led.py red; led.py red addblink & mpc -q stop
+    flags = quit
+  end
+  begin
+    prog = irexec
+    button = key_left
+    config = led.py yellow & mpc -q play; mpc -q prev; ssd1306_disp_mode.py
+    flags = quit
+  end
+  begin
+    prog = irexec
+    button = key_preCh
+    config = led.py yellow addblink & mpc -q play; mpc -q prev; ssd1306_disp_mode.py
+    flags = quit
+  end
+  begin
+    prog = irexec
+    button = key_right
+    config = led.py yellow addblink & mpc -q play; mpc -q next; ssd1306_disp_mode.py
+    flags = quit
+  end
+  begin
+    prog = irexec
+    button = key_nextCh 
+    config = led.py yellow addblink & mpc -q play; mpc -q next; ssd1306_disp_mode.py
+    flags = quit
+  end
+
+# displayMode info / spectrum 
+
+  begin
+    prog = irexec
+    button = key_reserve
+    config = led.py blue & ssd1306_disp_mode.py mpd_display
+    flags = quit
+  end
+
+# Enter memory_mpd
+
+  begin
+    prog = irexec
+    button = key_menu
+    config = led.py cyan; led.py red addblink & ssd1306_disp_mode.py memory_mpd
+    mode = memory_mpd
+    flags = quit
+  end
+end mpd
+
+
+

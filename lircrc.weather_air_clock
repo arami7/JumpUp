@@ -1,0 +1,69 @@
+# weather
+ 
+begin weather
+  begin 
+    prog = irexec
+    button = key_right
+    config = led.py yellow addblink & ssd1306_disp_mode.py weather_right
+    flags = quit
+  end
+  begin
+    prog = irexec
+    button = key_left
+    config = led.py yellow addblink & ssd1306_disp_mode.py weather_left
+    flags = quit
+  end
+
+end weather
+
+# clock / anniversary
+
+begin clock
+  begin
+    prog = irexec
+    button = key_up
+    config = led.py yellow addblink & ssd1306_disp_mode.py clock_up
+    flags = quit
+  end
+  begin
+    prog = irexec
+    button = key_down
+    config = led.py yellow addblink & ssd1306_disp_mode.py clock_down
+    flags = quit
+  end
+  begin
+    prog = irexec
+    button = key_right
+    config = led.py yellow addblink & ssd1306_disp_mode.py clock_presetup
+    repeat = 1
+    delay = 8
+    flags = quit
+  end
+  begin
+    prog = irexec
+    button = key_left
+    config = led.py yellow addblink & ssd1306_disp_mode.py clock_presetdown
+    repeat = 1
+    delay = 8
+    flags = quit
+  end
+
+end clock
+
+# air / atmosphere info
+
+begin air
+
+  begin
+    prog = irexec
+    button = key_left 
+    config = led.py yellow addblink & ssd1306_disp_mode.py air_left
+    flags = quit
+  end
+  begin
+    prog = irexec
+    button = key_right
+    config = led.py yellow addblink & ssd1306_disp_mode.py air_right
+    flags = quit
+  end
+end air
